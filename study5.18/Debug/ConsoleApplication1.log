@@ -1,0 +1,10 @@
+﻿生成启动时间为 2019/5/18 18:06:14。
+     1>项目“C:\Users\dell\Desktop\欧阳慧\study5.18\ConsoleApplication1\ConsoleApplication1.vcxproj”在节点 2 上(Build 个目标)。
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(381,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (ConsoleApplication1.vcxproj, study.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+     1>Link:
+         ConsoleApplication1.vcxproj -> C:\Users\dell\Desktop\欧阳慧\study5.18\Debug\study5.18.exe
+     1>已完成生成项目“C:\Users\dell\Desktop\欧阳慧\study5.18\ConsoleApplication1\ConsoleApplication1.vcxproj”(Build 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.04
