@@ -1,0 +1,13 @@
+顺序表
+元素：
+ptr、size、capacity
+
+CheckCapacity:检查容量，注意数组需要初始化，容量不为0
+PushBack:尾插  检查容量，插入 O(1)
+PopBack:尾删  _size--
+PushFront:头插  检查容量，移动元素(从后向前，避免覆盖)，插入 O(n)
+PopFront:头删   移动元素(从前往后)，修改_size
+Insert:插入 移动元素，插入元素，_size++
+Erase:删除 移动元素，_size--
+RemoveAll:批量删除指定元素  1）两个数组  一个原数组，一个存放非指定元素，再进行拷贝
+                                               2）两个指针  一个找非指定元素，一个从头覆盖元素，遍历完成修改_size
