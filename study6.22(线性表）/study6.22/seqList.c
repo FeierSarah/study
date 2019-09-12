@@ -1,7 +1,3 @@
-#define _CRT_SECURE_NO_WARNINGS 1
-#include<stdio.h>
-#include<stdlib.h>
-#include<assert.h>
 #include"seqList.h"
 
 void SeqListInit(SeqList*psl, size_t capacity)
@@ -22,7 +18,6 @@ void SeqListDestory(SeqList*psl)
 		psl->size= 0;
 		psl->capacity = 0;
 	}
-
 }
 
 void CheckCapacity(SeqList*psl)
@@ -33,7 +28,11 @@ void CheckCapacity(SeqList*psl)
 		psl->capacity *= 2;
 		psl->array = (SLDataType*)realloc(psl,psl->capacity*sizeof(SeqList));
 	}
-
+	else if (!psl->capacity)
+	{
+		psl->capacity += 20 * sizeof(SLDataType*);
+		psl->array = (SLDataType*)realloc(psl, psl->capacity*sizeof(SeqList));
+	}
 }
 
 void SeqListPushBack(SeqList*psl,SLDataType x)
@@ -47,6 +46,7 @@ void SeqListPushBack(SeqList*psl,SLDataType x)
 void SeqListPopBack(SeqList*psl)
 {
 	assert(psl||psl->size);
+	CheckCapacity(psl);
 	psl->size--;
 }
 
@@ -67,15 +67,12 @@ void SeqListPopFront(SeqList*psl)
 {
 	assert(psl);
 	psl->size--;
-	int i;
-	
-
 }
 void SeqListPrint(SeqList*psl)
 {
 	assert(psl);
 	int i;
-	for (i = 0; i < psl->size; i++)
+	for (i = 0; i < (int) psl->size; i++)
 	{
 		printf("%d ", psl->array[i]);
 	}
@@ -86,7 +83,7 @@ int SeqListFind(SeqList*psl, SLDataType x)
 {
 	assert(psl);
 	int i;
-	for (i = 0; i < psl->size; i++)
+	for (i = 0; i <(int)psl->size; i++)
 	{
 		if (psl->array[i] == x)
 		{
@@ -101,7 +98,7 @@ void SeqListInsert(SeqList*psl, size_t pos, SLDataType x)
 	assert(psl||pos<=psl->size);
 	CheckCapacity(psl);
 	int i;
-	for (i = psl->size - 1; i >= pos; i--)
+	for (i = (int)psl->size - 1; i >= (int)pos; i--)
 	{
 		psl->array[i + 1] = psl->array[i];
 	}
@@ -114,7 +111,7 @@ void SeqListErase(SeqList*psl, size_t pos)
 	assert(psl || pos < psl->size);
 	psl->size--;
 	int i;
-	for (i = pos; i < psl->size; i++)
+	for (i = pos; i < (int)psl->size; i++)
 	{
 		psl->array[i] = psl->array[i + 1];
 	}

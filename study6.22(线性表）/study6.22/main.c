@@ -1,9 +1,4 @@
-#define _CRT_SECURE_NO_WARNINGS 1
-#include<stdio.h>
-#include<stdlib.h>
-#include<assert.h>
 #include"seqList.h"
-
 int main()
 {
 	SeqList test;
@@ -25,7 +20,7 @@ int main()
 	SeqListPopback(&test);
 
 	SeqListPrint(&test);
-
+	
 	SeqListDestory(&test);
 	return 0;
 }

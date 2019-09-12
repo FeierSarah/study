@@ -1,4 +1,4 @@
-﻿#ifndef _SLIST_H_
+#ifndef _SLIST_H_
 #define _SLIST_H_
 /*
 for(cur = head; cur; cur = cur->next)

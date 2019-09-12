@@ -35,7 +35,7 @@ void SeqListCheckCapacity(SeqList* sl)
 		if (sl->_capacity!=0)
 			sl->_capacity *= 2;
 		else
-			sl->_capacity = 5*sizeof(SeqList);
+			sl->_capacity = 5 * sizeof(DataType);
 		sl->_array = (DataType *)realloc(sl->_array, sl->_capacity * sizeof(DataType));
 	}
 }
