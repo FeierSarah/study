@@ -108,6 +108,29 @@ void SingleListPrint(SingleList* sl)
 	printf("\n");
 }
 
+
+void SingleListInsertFront(SingleList* sl, DataType x, DataType src)
+{
+	assert(sl);
+	SingleListNode * cur;
+	SingleListNode * newNode = CreatNode(src);
+
+	if (sl->_head->_data == x)
+	{
+		SingleListPushFront(sl, src);
+		return;
+	}
+	for (cur = sl->_head; cur->_next; cur = cur->_next)
+	{
+		if (cur->_next->_data == x)
+		{
+			break;
+		}
+	}
+	newNode->_next = cur->_next;
+	cur->_next = newNode;
+}
+
 void SingleListInsertAfter(SingleListNode* pos, DataType x)
 {
 	assert(pos);
@@ -130,4 +153,24 @@ void SingleListEraseAfter(SingleListNode* pos)
 		free(next);
 		next == NULL;
 	}
+}
+
+SingleListNode* SingleListFind(SingleList* sl, DataType x)
+{
+	assert(sl);
+	SingleListNode * cur;
+	for (cur = sl->_head; cur; cur = cur->_next)
+	{
+		if (cur->_data == x)
+		{
+			return cur;
+		}
+	}
+	return NULL;
+}
+
+void SingleListRemoveAll(SingleList* sl, DataType x)
+{
+	assert(sl);
+
 }
