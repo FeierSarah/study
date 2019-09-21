@@ -168,9 +168,3 @@ SingleListNode* SingleListFind(SingleList* sl, DataType x)
 	}
 	return NULL;
 }
-
-void SingleListRemoveAll(SingleList* sl, DataType x)
-{
-	assert(sl);
-
-}

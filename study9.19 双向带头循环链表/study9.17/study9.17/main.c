@@ -17,6 +17,7 @@ void test()
 
 int main()
 {
-	void test();
+	test();
+	system("pause");
 	return 0;
 }

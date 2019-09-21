@@ -17,7 +17,7 @@ void ListDestroy(List* lst)
 	{
 		ListNode* next = cur->_next;
 		free(cur);
-		cur = NULL;
+		cur = next;
 	}
 	free(lst->_head);
 }

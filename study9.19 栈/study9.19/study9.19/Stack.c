@@ -13,10 +13,10 @@ void StackPush(Stack* st, DataType x)
 	if (st->_top == st->_capacity)
 	{
 		size_t newC = st->_capacity == 0 ? 10 : 2 * st->_capacity;
-		st->_a = (DataType*)realloc(st->_a, newC * sizeof(st->_capacity));
+		st->_a = (DataType*)realloc(st->_a, newC * sizeof(st->_top));
 		st->_capacity = newC;
 	}
-	st->_a[st->_capacity]++;
+	st->_a[st->_top++] = x;
 }
 
 void StackPop(Stack* st)
@@ -43,10 +43,10 @@ void StackPrint(Stack* st)
 	assert(st);
 	while (StackEmpty(st) != 1)
 	{
-		printf("%d", StackTop(st));
+		printf("%d ", StackTop(st));
 		StackPop(st);
 	}
-	print("\n");
+	printf("\n");
 }
 
 size_t StackSize(Stack* st)
@@ -63,6 +63,7 @@ void test()
 	StackPush(&s, 3);
 	StackPush(&s, 4);
 	StackPrint(&s);
+	StackEmpty(&s);
 }
 int main()
 {

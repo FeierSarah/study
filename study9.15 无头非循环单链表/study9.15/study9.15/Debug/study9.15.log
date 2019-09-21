@@ -1,24 +1,24 @@
-﻿生成启动时间为 2019/9/15 22:24:00。
-     1>项目“C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study9.15 无头不循环单链表\study9.15\study9.15\study9.15.vcxproj”在节点 2 上(Build 个目标)。
+﻿生成启动时间为 2019/9/21 22:37:47。
+     1>项目“C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study9.15 无头非循环单链表\study9.15\study9.15\study9.15.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt SeqList.c
          SeqList.c
-     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头不循环单链表\study9.15\study9.15\seqlist.c(40): warning C4133: “=”: 从“SingleList *”到“SingleListNode *”的类型不兼容
-     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头不循环单链表\study9.15\study9.15\seqlist.c(51): warning C4133: “=”: 从“SingleList *”到“SingleListNode *”的类型不兼容
-     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头不循环单链表\study9.15\study9.15\seqlist.c(82): warning C4133: “初始化”: 从“SingleList *”到“SingleListNode *”的类型不兼容
-     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头不循环单链表\study9.15\study9.15\seqlist.c(92): warning C4133: “=”: 从“SingleListNode *”到“SingleList *”的类型不兼容
-     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头不循环单链表\study9.15\study9.15\seqlist.c(93): warning C4133: “=”: 从“SingleListNode *”到“SingleList *”的类型不兼容
-     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头不循环单链表\study9.15\study9.15\seqlist.c(96): warning C4133: “=”: 从“SingleList *”到“SingleListNode *”的类型不兼容
-     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头不循环单链表\study9.15\study9.15\seqlist.c(116): warning C4133: “初始化”: 从“SingleList *”到“SingleListNode *”的类型不兼容
-     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头不循环单链表\study9.15\study9.15\seqlist.c(137): warning C4133: “初始化”: 从“SingleList *”到“SingleListNode *”的类型不兼容
-     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头不循环单链表\study9.15\study9.15\seqlist.c(154): warning C4553: “==”: 运算符不起任何作用；是否是有意使用“=”的?
-     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头不循环单链表\study9.15\study9.15\seqlist.c(29): warning C4716: “CreatNode”: 必须返回一个值
+     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头非循环单链表\study9.15\study9.15\seqlist.c(40): warning C4133: “=”: 从“SingleList *”到“SingleListNode *”的类型不兼容
+     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头非循环单链表\study9.15\study9.15\seqlist.c(51): warning C4133: “=”: 从“SingleList *”到“SingleListNode *”的类型不兼容
+     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头非循环单链表\study9.15\study9.15\seqlist.c(82): warning C4133: “初始化”: 从“SingleList *”到“SingleListNode *”的类型不兼容
+     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头非循环单链表\study9.15\study9.15\seqlist.c(92): warning C4133: “=”: 从“SingleListNode *”到“SingleList *”的类型不兼容
+     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头非循环单链表\study9.15\study9.15\seqlist.c(93): warning C4133: “=”: 从“SingleListNode *”到“SingleList *”的类型不兼容
+     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头非循环单链表\study9.15\study9.15\seqlist.c(96): warning C4133: “=”: 从“SingleList *”到“SingleListNode *”的类型不兼容
+     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头非循环单链表\study9.15\study9.15\seqlist.c(116): warning C4133: “初始化”: 从“SingleList *”到“SingleListNode *”的类型不兼容
+     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头非循环单链表\study9.15\study9.15\seqlist.c(137): warning C4133: “初始化”: 从“SingleList *”到“SingleListNode *”的类型不兼容
+     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头非循环单链表\study9.15\study9.15\seqlist.c(154): warning C4553: “==”: 运算符不起任何作用；是否是有意使用“=”的?
+     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study9.15 无头非循环单链表\study9.15\study9.15\seqlist.c(29): warning C4716: “CreatNode”: 必须返回一个值
        Link:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study9.15 无头不循环单链表\study9.15\Debug\study9.15.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study9.15 无头不循环单链表\study9.15\Debug\study9.15.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study9.15 无头不循环单链表\study9.15\Debug\study9.15.lib" /MACHINE:X86 Debug\main.obj
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study9.15 无头非循环单链表\study9.15\Debug\study9.15.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study9.15 无头非循环单链表\study9.15\Debug\study9.15.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study9.15 无头非循环单链表\study9.15\Debug\study9.15.lib" /MACHINE:X86 Debug\main.obj
          Debug\SeqList.obj
-         study9.15.vcxproj -> C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study9.15 无头不循环单链表\study9.15\Debug\study9.15.exe
-     1>已完成生成项目“C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study9.15 无头不循环单链表\study9.15\study9.15\study9.15.vcxproj”(Build 个目标)的操作。
+         study9.15.vcxproj -> C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study9.15 无头非循环单链表\study9.15\Debug\study9.15.exe
+     1>已完成生成项目“C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study9.15 无头非循环单链表\study9.15\study9.15\study9.15.vcxproj”(Build 个目标)的操作。
 
 生成成功。
 
-已用时间 00:00:02.22
+已用时间 00:00:00.55
