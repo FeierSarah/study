@@ -54,3 +54,10 @@ DataType QueueFront(Queue* q);
 DataType QueueBack(Queue* q);
 
 void QueuePrint(Queue* q);
+typedef int DataType;
+typedef struct Stack
+{
+	DataType* _a;
+	size_t _top;
+	size_t _capacity;
+}Stack;

@@ -157,9 +157,58 @@ int BinaryTreeComplete(BTNode* root)
 	}
 	return 1;
 }
-void BinaryTreePrevOrderNonR(BTNode* root);
-void BinaryTreeInOrderNonR(BTNode* root);
-void BinaryTreePostOrderNonR(BTNode* root);
+
+void BinaryTreePrevOrderNonR(BTNode* root)
+{
+	BTNode* cur = root;
+	BTNode* top;
+	Stack st;
+	StackInit(&st);
+	while (cur || StackEmpty(&st) == 0)
+	{
+		while (cur)
+		{
+			printf("%c ", cur->_data);
+			StackPush(&st, cur);
+			cur = cur->_left;
+		}
+		top = StackTop(&st);
+		StackPop(&st);
+		cur = top->_right;
+	}
+	printf("\n");
+}
+
+void BinaryTreeInOrderNonR(BTNode* root)
+{
+
+}
+
+void BinaryTreePostOrderNonR(BTNode* root)
+{
+	BTNode* cur = root;
+	BTNode* top,* prev;
+	Stack st;
+	StackInit(&st);
+	while (cur || StackEmpty(&st) == 0)
+	{
+		while (cur)
+		{
+			StackPush(&st, cur);
+			cur = cur->_left;
+		}
+		top = StackTop(&st);
+		if (top->_right == NULL || top->_right == prev)
+		{
+			printf("%c ", top->_data);
+			StackPop(&st);
+			prev = top;
+		}
+		else
+			cur = top->_right;
+	}
+	printf("\n");
+}
 
 void TestBinaryTree()
 {
