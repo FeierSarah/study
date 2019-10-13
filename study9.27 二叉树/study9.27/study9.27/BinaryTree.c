@@ -181,7 +181,23 @@ void BinaryTreePrevOrderNonR(BTNode* root)
 
 void BinaryTreeInOrderNonR(BTNode* root)
 {
-
+	BTNode* cur = root;
+	BTNode* top,* prev;
+	Stack st;
+	StackInit(&st);
+	while (cur || StackEmpty(&st) == 0)
+	{
+		while (cur)
+		{
+			StackPush(&st, cur);
+			cur = cur->_left;
+		}
+		top = StackTop(&st);
+		printf("%c ", top->_data);
+		StackPop(&st);
+		cur = top->_right;
+	}
+	printf("\n");
 }
 
 void BinaryTreePostOrderNonR(BTNode* root)
@@ -192,7 +208,7 @@ void BinaryTreePostOrderNonR(BTNode* root)
 	StackInit(&st);
 	while (cur || StackEmpty(&st) == 0)
 	{
-		while (cur)
+		if (cur)
 		{
 			StackPush(&st, cur);
 			cur = cur->_left;
