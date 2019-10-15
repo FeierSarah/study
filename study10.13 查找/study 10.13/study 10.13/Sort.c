@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include<string.h>
 #include<assert.h>
-
+#include"Stack.h"
 /*插入排序*/
 //时间：O(N^2)
 //空间：O(1)
@@ -153,6 +153,153 @@ void BubbleSort(int* a, int n)
 	}
 }
 
+/*快速排序*/
+//时间：N * logN
+//空间：logN 空间可以复用，最大的递归调用链
+//稳定性：
+//三数取中
+int getMid(int* a, int left, int right)
+{
+	int mid = left + (right - left) / 2;
+	while (left <right)
+	{
+		if (a[mid] > a[left])
+		{
+			if (a[mid] < a[right])
+				return mid;
+			else
+			{
+				if (a[left] > a[right])
+					return left;
+				else
+					return right;
+			}
+		}
+		else
+		{
+			if (a[left] < a[right])
+				return left;
+			else
+			{
+				if (a[mid] > a[right])
+					return mid;
+				else
+					return right;
+			}
+		}
+	}
+}
+
+int PartSort(int* a, int left, int right)
+{
+	int mid = getMid(&a, left, right);
+	Swap(&a[mid], &a[left]);
+
+	int key = a[left];
+	int start = left;
+	while (left < right)
+	{
+		while (left < right && a[right] >= key)
+			--right;
+		while (left < right && a[right] <= key)
+			++left;
+		Swap(&a[left], &a[right]);
+	}
+	Swap(&a[start], &a[left]);
+	return left;
+}
+
+//挖坑法
+int PartSort2(int* a, int left, int right)
+{
+	int mid = getMid(&a, left, right);
+	Swap(&a[mid], &a[left]);
+
+	int key = a[left];
+	while (left < right)
+	{
+		while (left < right && a[right] >= key)
+			--right;
+		a[left] = a[right];
+		while (left < right && a[right] <= key)
+			++left;
+		a[right] = a[left];
+	}
+	a[left] = key;
+	return left;
+}
+
+//前后指针法
+int PartSort3(int* a, int left, int right)
+{
+	int mid = getMid(&a, left, right);
+	Swap(&a[mid], &a[left]);
+
+	int key = a[left];
+	int prev = left; //最后一个小于key的位置
+	int cur = left + 1;//下一个小于key的位置
+	//如果下一个小于key的位置与上一个小于key的位置不连续
+	//说明中间有大于key的值，进行交换，大的往后移动，小的往前移动
+	while (left <= right)
+	{
+		if (a[cur] < key && ++prev != cur)
+			Swap(&a[prev], &a[cur]);
+		++cur;
+	}
+	Swap(&a[left], &a[prev]);
+	return left;
+}
+
+//递归
+void QuickSort(int* a, int left, int right)
+{
+	if (left >= right)
+		return;
+	else if (right - left + 1 < 5)
+	{
+		InsertSort(a + left, right - left + 1);
+	}
+	else
+	{
+		int mid = PartSort(a, left, right);
+		QuickSort(a, left, mid - 1);
+		QuickSort(a, mid + 1, right);
+	}
+}
+
+//非递归
+//调用栈 后进先出
+void QuickSort2(int* a, int left, int right)
+{
+	Stack st;
+	StackInit(&st);
+	if (left < right)
+	{
+		StackPush(&st, right);
+		StackPush(&st, left);
+	}
+	while (StackEmpty(&st) == 0)
+	{
+		int begin = StackTop(&st);
+		StackPop(&st);
+		int end = StackTop(&st);
+		StackPop(&st);
+		//划分当前区间
+		int mid = PartSort(a, begin, end);
+		//划分左右子区间
+		if (begin < mid - 1)
+		{
+			StackPush(&st, mid - 1);
+			StackPush(&st, begin);
+		}
+		if (mid + 1 < end)
+		{
+			StackPush(&st, end);
+			StackPush(&st, mid + 1);
+		}
+	}
+}
+
 void ArrayPrint(int* a, int n)
 {
 	for (int i = 0; i < n; i++)
@@ -180,6 +327,12 @@ void testSort()
 	ArrayPrint(&a, sizeof(a) / sizeof(int));
 
 	BubbleSort(&a, sizeof(a) / sizeof(int));
+	ArrayPrint(&a, sizeof(a) / sizeof(int));
+
+	QuickSort(&a, 0, sizeof(a) / sizeof(int) - 1);
+	ArrayPrint(&a, sizeof(a) / sizeof(int));
+
+	QuickSort2(&a, 0, sizeof(a) / sizeof(int)-1);
 	ArrayPrint(&a, sizeof(a) / sizeof(int));
 }
 
