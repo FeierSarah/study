@@ -1,8 +1,9 @@
-﻿生成启动时间为 2019/10/15 21:45:24。
+﻿生成启动时间为 2019/10/17 20:14:05。
      1>项目“C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study10.13 查找\study 10.13\study 10.13\study 10.13.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
-         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt Stack.c
-         Stack.c
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt Sort.c
+         Sort.c
+     1>c:\users\dell\desktop\欧阳慧\bite\vs\study\study10.13 查找\study 10.13\study 10.13\sort.c(194): warning C4715: “getMid”: 不是所有的控件路径都返回值
        Link:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study10.13 查找\study 10.13\Debug\study 10.13.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study10.13 查找\study 10.13\Debug\study 10.13.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\dell\Desktop\欧阳慧\bite\VS\study\study10.13 查找\study 10.13\Debug\study 10.13.lib" /MACHINE:X86 Debug\Sort.obj
          Debug\Stack.obj
@@ -11,4 +12,4 @@
 
 生成成功。
 
-已用时间 00:00:00.49
+已用时间 00:00:00.41

@@ -25,11 +25,12 @@ void InsertSort(int* a, int n)
 }
 
 /*希尔排序*/
-//时间:O(n^1.3 - n^2)
+//时间:O(N^1.3 - N^2)
 //空间：O(1)
 //稳定性：不稳定
 void ShellSort(int* a, int n)
 {
+	assert(a);
 	int gap = n;
 	while (gap > 1)
 	{
@@ -62,6 +63,7 @@ void Swap(int* a, int* b)
 //稳定性：稳定
 void SelectSort(int* a, int n)
 {
+	assert(a);
 	int begin = 0, end = n - 1;
 	//每次选一个最大的和最小的，放到相应的位置
 	while (begin < end)
@@ -85,7 +87,7 @@ void SelectSort(int* a, int n)
 }
 
 /*堆排序*/
-//时间：O(n * log(n))
+//时间：O(N * log(N))
 //空间：O(1)
 //稳定性：
 void ShiftDown(int* a, int n, int root)
@@ -132,7 +134,7 @@ void HeapSort(int* a, int n)
 }
 
 /*冒泡排序*/
-//时间：O(n^2)
+//时间：O(N^2)
 //空间：O(1)
 //稳定性：稳定
 void BubbleSort(int* a, int n)
@@ -154,12 +156,13 @@ void BubbleSort(int* a, int n)
 }
 
 /*快速排序*/
-//时间：N * logN
-//空间：logN 空间可以复用，最大的递归调用链
-//稳定性：
+//时间：O(N * logN)
+//空间：O(logN) 空间可以复用，最大的递归调用链
+//稳定性：不稳定
 //三数取中
 int getMid(int* a, int left, int right)
 {
+	assert(a);
 	int mid = left + (right - left) / 2;
 	while (left <right)
 	{
@@ -192,7 +195,8 @@ int getMid(int* a, int left, int right)
 
 int PartSort(int* a, int left, int right)
 {
-	int mid = getMid(&a, left, right);
+	assert(a);
+	int mid = getMid(a, left, right);
 	Swap(&a[mid], &a[left]);
 
 	int key = a[left];
@@ -212,7 +216,8 @@ int PartSort(int* a, int left, int right)
 //挖坑法
 int PartSort2(int* a, int left, int right)
 {
-	int mid = getMid(&a, left, right);
+	assert(a);
+	int mid = getMid(a, left, right);
 	Swap(&a[mid], &a[left]);
 
 	int key = a[left];
@@ -232,7 +237,8 @@ int PartSort2(int* a, int left, int right)
 //前后指针法
 int PartSort3(int* a, int left, int right)
 {
-	int mid = getMid(&a, left, right);
+	assert(a);
+	int mid = getMid(a, left, right);
 	Swap(&a[mid], &a[left]);
 
 	int key = a[left];
@@ -253,6 +259,7 @@ int PartSort3(int* a, int left, int right)
 //递归
 void QuickSort(int* a, int left, int right)
 {
+	assert(a);
 	if (left >= right)
 		return;
 	else if (right - left + 1 < 5)
@@ -271,6 +278,7 @@ void QuickSort(int* a, int left, int right)
 //调用栈 后进先出
 void QuickSort2(int* a, int left, int right)
 {
+	assert(a);
 	Stack st;
 	StackInit(&st);
 	if (left < right)
@@ -300,6 +308,51 @@ void QuickSort2(int* a, int left, int right)
 	}
 }
 
+/*合并牌序*/
+//时间：O(N * logN)
+//空间：O(N + logN) ~ O(N) 
+//稳定性：稳定
+void _MergeSort(int* a, int left, int right, int* tmp)
+{
+	assert(a);
+	//区间只剩一个元素，无需分解和归并
+	if (left >= right)
+		return;
+	//分解
+	int mid = (right - left) / 2 + left;
+	_MergeSort(a, left, mid, tmp);
+	_MergeSort(a, mid + 1, right, tmp);
+	//合并
+	int begin1 = left, end1 = mid, begin2 = mid + 1, end2 = right;
+	int tmpindex = begin1;
+	while (begin1 <= end1 && begin2 <= end2)
+	{
+		if (a[begin1] <= a[begin2])
+		{
+			tmp[tmpindex++] = a[begin1++];
+		}
+		else
+		{
+			tmp[tmpindex++] = a[begin2++];
+		}
+	}
+	while (begin1 <= end1)
+	{
+		tmp[tmpindex++] = a[begin1++];
+	}
+	while (begin2 <= end2)
+	{
+		tmp[tmpindex++] = a[begin2++];
+	}
+}
+void MergeSort(int* a, int n)
+{
+	assert(a);
+	int *tmp = (int*)malloc(n * sizeof(int));
+	_MergeSort(a, 0, n - 1, tmp);
+	free(tmp);
+}
+
 void ArrayPrint(int* a, int n)
 {
 	for (int i = 0; i < n; i++)
@@ -309,31 +362,65 @@ void ArrayPrint(int* a, int n)
 	printf("\n");
 }
 
+/*计数排序*/
+void CountSort(int* a, int n)
+{
+	int min = a[0], max = a[0];
+	int i;
+	for (i = 1; i < n; ++i)
+	{
+		if (a[i] < min)
+			min = a[i];
+		if (a[i] > max)
+			max = a[i];
+	}
+	int range = max - min + 1;
+	int* CountArr = (int*)malloc(sizeof(int)* range);
+	memset(CountArr, 0, sizeof(int)* range);
+	//计数
+	for (i = 0; i < n; ++i)
+	{
+		CountArr[a[i] - min]++;
+	}
+	//排序
+	int index = 0;
+	for (i = 0; i < range; ++i)
+	{
+		while (CountArr[i]--)
+		{
+			a[index++] = i + min;
+		}
+	}
+}
+
 void testSort()
 {
 	int a[] = { 10, 2, 3, 8, 9, 7, 6, 1, 5, 4 };
-	ArrayPrint(&a, sizeof(a) / sizeof(int));
+	ArrayPrint(a, sizeof(a) / sizeof(int));
 
-	InsertSort(&a, sizeof(a) / sizeof(int));
-	ArrayPrint(&a, sizeof(a) / sizeof(int));
+	InsertSort(a, sizeof(a) / sizeof(int));
+	ArrayPrint(a, sizeof(a) / sizeof(int));
 
-	ShellSort(&a, sizeof(a) / sizeof(int));
-	ArrayPrint(&a, sizeof(a) / sizeof(int));
+	ShellSort(a, sizeof(a) / sizeof(int));
+	ArrayPrint(a, sizeof(a) / sizeof(int));
 
-	SelectSort(&a, sizeof(a) / sizeof(int));
-	ArrayPrint(&a, sizeof(a) / sizeof(int));
+	SelectSort(a, sizeof(a) / sizeof(int));
+	ArrayPrint(a, sizeof(a) / sizeof(int));
 
-	HeapSort(&a, sizeof(a) / sizeof(int));
-	ArrayPrint(&a, sizeof(a) / sizeof(int));
+	HeapSort(a, sizeof(a) / sizeof(int));
+	ArrayPrint(a, sizeof(a) / sizeof(int));
 
-	BubbleSort(&a, sizeof(a) / sizeof(int));
-	ArrayPrint(&a, sizeof(a) / sizeof(int));
+	BubbleSort(a, sizeof(a) / sizeof(int));
+	ArrayPrint(a, sizeof(a) / sizeof(int));
 
-	QuickSort(&a, 0, sizeof(a) / sizeof(int) - 1);
-	ArrayPrint(&a, sizeof(a) / sizeof(int));
+	QuickSort(a, 0, sizeof(a) / sizeof(int) - 1);
+	ArrayPrint(a, sizeof(a) / sizeof(int));
 
-	QuickSort2(&a, 0, sizeof(a) / sizeof(int)-1);
-	ArrayPrint(&a, sizeof(a) / sizeof(int));
+	QuickSort2(a, 0, sizeof(a) / sizeof(int) - 1);
+	ArrayPrint(a, sizeof(a) / sizeof(int));
+
+	MergeSort(a, sizeof(a) / sizeof(int));
+	ArrayPrint(a, sizeof(a) / sizeof(int));
 }
 
 int main()
