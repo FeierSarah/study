@@ -48,9 +48,26 @@ void testContrust()
 
 	Date d2;
 	d2.SetDate(2019, 10, 21);
+
+	//拷贝构造
 	Date d3(d2);
 	Date d4 = d3;
 	/*Date d5 = Date(2019, 10, 20);*/
+
+	//赋值
+	Date d5;
+	d5 = d1;
+	d3 = d2 = d1; //连续赋值
+	cout << d5 == d1 << endl;
+
+	//const
+	const Date d4(2019, 10, 24);
+	d4.Display();//由const定义的常量只能调用带有const的成员函数
+	             //权限可以缩小，不可以放大
+
+	//取地址
+	Date* pd = &d1;
+	const Date* pd1 = &d4;
 }
 
 void testString()
