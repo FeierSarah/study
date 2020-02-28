@@ -8,7 +8,9 @@ struct BSTNode
 	T _data;
 
 	BSTNode(const T& data = T())
-		: _pLeft(nullptr), _pRight(nullptr), _data(data)
+		: _pLeft(nullptr)
+		, _pRight(nullptr)
+		, _data(data)
 	{}
 };
 
@@ -18,10 +20,6 @@ class BSTree
 	typedef BSTNode<T> Node;
 	typedef Node* PNode;
 public:
-	//BSTree() : _pRoot(nullptr)
-	//{}
-	//
-
 	//~BSTree();
 	// 根据二叉搜索树的性质查找：找到值为data的节点在二叉搜索树中的位置
 	PNode Find(const T& data)
@@ -139,4 +137,9 @@ void testBSTree()
 	bst.Insert(7);
 	bst.Insert(8);
 	bst.Insert(9);
+}
+
+int main()
+{
+	return 0;
 }

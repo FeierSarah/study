@@ -1,3 +1,6 @@
+#include <iostream>
+using namespace std;
+
 template<class T>
 struct AVLNode
 {
@@ -18,10 +21,22 @@ struct AVLNode
 };
 
 template<class T>
-class AVLNode
+class AVLTree
 {
 public:
+	typedef AVLNode<T> Node;
+	typedef Node* pNode;
 
+	void RotateR(pNode parent)
+	{
+		pNode subl = parent->_left;
+		pNode subr = parent->_right;
+
+		subl->right = parent;
+		parent->_left = subr;
+		if (subr)
+			subr->_parent = 
+	}
 private:
 
 };
