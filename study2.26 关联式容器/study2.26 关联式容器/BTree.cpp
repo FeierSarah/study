@@ -17,10 +17,12 @@ struct BSTNode
 template<class T>
 class BSTree
 {
+private:
+	PNode _root = nullptr;
+public:
 	typedef BSTNode<T> Node;
 	typedef Node* PNode;
-public:
-	//~BSTree();
+
 	// 根据二叉搜索树的性质查找：找到值为data的节点在二叉搜索树中的位置
 	PNode Find(const T& data)
 	{
@@ -40,7 +42,6 @@ public:
 				cur = cur->_pLeft;
 		}
 		return cur;
-
 	}
 
 	bool Insert(const T& data)
@@ -117,9 +118,20 @@ public:
 		}
 		return true;
 	}
-	void InOrder(PNode root)
+	void _InOrder(PNode root)
 	{
-	
+		if (root)
+		{
+			
+			InOrder(root->_pLeft);
+			cout << root->_data << " ";
+			InOrder(root->_pRight);
+		}
+	}
+	void InOrder()
+	{
+		_InOrder(_pRoot);
+		cout << endl;
 	}
 private:
 	PNode _pRoot;
