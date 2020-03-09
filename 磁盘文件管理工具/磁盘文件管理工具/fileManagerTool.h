@@ -15,7 +15,7 @@ public:
 	void deleteAllCopy();
 	void deleteFuzzyMatchCopy();
 	void showCopy();
-	void showAllFile();
+	void showAll();
 private:
 	FileManager _fm;
 };

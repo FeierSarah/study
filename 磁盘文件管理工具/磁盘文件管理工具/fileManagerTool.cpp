@@ -42,7 +42,7 @@ void FileManagerTool::showCopy()
 	_fm.showCopyList();
 }
 
-void FileManagerTool::showAllFile()
+void FileManagerTool::showAll()
 {
 	_fm.showAllFile;
 }

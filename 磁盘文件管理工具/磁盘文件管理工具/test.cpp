@@ -73,14 +73,14 @@ void testFileManagerTool()
 		std::string garbage;
 		cout << "ÇëÊäÈëÑ¡Ïî" << endl;
 		cin >> input;
-		//getline(cin, garbage);
+		getline(cin, garbage);
 		switch (input)
 		{
 		case 1:
 			fmt.scanner();
 			break;
 		case 2:
-			fmt.showAllFile();
+			fmt.showAll();
 			break;
 		case 3:
 			fmt.showCopy();
@@ -113,6 +113,7 @@ int main()
 	//testStringMD5();
 	//testFileMD5();
 	//testSearch();
-	testFM();
+	//testFM();
+	testFileManagerTool();
 	return 0;
 }
