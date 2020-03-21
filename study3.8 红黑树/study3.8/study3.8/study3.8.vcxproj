@@ -64,6 +64,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="HashTable.cpp" />
     <ClCompile Include="Map.Set.cpp" />
     <ClCompile Include="RbTree.cpp" />
   </ItemGroup>

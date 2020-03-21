@@ -75,8 +75,37 @@ struct RBIterator
 				_node = parent;
 				parent = parent->_parent;
 			}
-			//特殊情况下有问题：
-			_node = parent;
+			//特殊情况下有问题：_node->_right == parent : 整棵树没有右子树， 且 _node指向_header
+			if (_node->_right != parent)
+				_node = parent;
+		}
+
+		return *this;
+	}
+
+	Self& operator--()
+	{
+		//如果存在左节点， 移动到左子树的最右节点
+		if (_node->_left)
+		{
+			_node = _node->_left;
+			while (_node->_right)
+			{
+				_node = _node->_right;
+			}
+		}
+		else
+		{
+			//向上回溯，找到它的孩子不是它的左的节点
+			pNode parent = _node->_parent;
+			while (_node == parent->_left)
+			{
+				_node = parent;
+				parent = parent->_parent;
+			}
+			//特殊情况下有问题：_node->_left == parent : 整棵树没有左子树， 且 _node指向_header
+			if (_node->_left != parent)
+				_node = parent;
 		}
 
 		return *this;
@@ -102,6 +131,11 @@ public:
 		return iterator(_header);
 	}
 
+	iterator rbegin()
+	{
+		return iterator(_header->_right);
+	}
+
 	RBTree()
 	{
 		//构建空的红黑树
@@ -110,7 +144,7 @@ public:
 		_header->_right = _header;
 	}
 
-	bool insert(const V& value)
+	pair<iterator, bool> insert(const V& value)
 	{
 		//搜索树的插入
 		if (_header->_parent == nullptr)
@@ -123,7 +157,8 @@ public:
 
 			_header->_left = root;
 			_header->_right = root;
-			return true;
+			//return true;
+			return make_pair(iterator(root), true);
 		}
 		//从根开始搜索
 		pNode cur = _header->_parent;
@@ -135,13 +170,15 @@ public:
 			parent = cur;
 			//对于不同的V,需要获取V对应的K
 			if (kov(cur->_value) == kov(value))
-				return false;
+				//return false;
+				return make_pair(iterator(cur), false);
 			else if (kov(cur->_value) > kov(value))
 				cur = cur->_left;
 			else
 				cur = cur->_right;
 		}
 		cur = new Node(value);
+		pNode newNode = cur;
 		if (kov(parent->_value) > kov(cur->_value))
 			parent->_left = cur;
 		else
@@ -212,7 +249,8 @@ public:
 		//更新 _header->_left, _header->_right
 		_header->_left = leftMost();
 		_header->_right = rightMost();
-		return true;
+		//return true;
+		return make_pair(iterator(newNode), true);
 	}
 
 	pNode leftMost()
@@ -394,15 +432,28 @@ public:
 	{
 		return _rb.end();
 	}
+	iterator rbegin()
+	{
+		return _rb.rbegin();
+	}
 
-	bool insert(const pair<K, V>& data)
+	V& operator[](const K& key)
+	{
+		//(*((this->insert(make_pair(k,mapped_type()))).first)).second
+		//return (*(_rb.insert(make_pair(key, V())).first)).second;
+		pair<iterator, bool> ret = _rb.insert(make_pair(key, V()));
+		iterator it = ret.first;
+		return (*it).second;   // it->second;
+	}
+
+	pair<iterator, bool> insert(const pair<K, V>& data)
 	{
 		return _rb.insert(data);
 	}
 	/*
 	void mapInorder()
 	{
-	_rb.inOrder();
+		_rb.inOrder();
 	}
 	*/
 private:
@@ -420,11 +471,12 @@ class MySet
 		}
 	};
 public:
-	bool insert(const K& value)
+	typedef typename RBTree<K, K, SetKeyOfValue>::iterator iterator;
+	pair<iterator, bool> insert(const K& value)
 	{
 		return _rb.insert(value);
 	}
-
+	
 private:
 	RBTree<K, K, SetKeyOfValue> _rb;
 };
@@ -434,20 +486,23 @@ private:
 void testMap()
 {
 	MyMap<int, int> mp;
-	mp.insert(make_pair(1, 1));
+	
 	mp.insert(make_pair(2, 2));
+	mp.insert(make_pair(1, 1));
 	mp.insert(make_pair(3, 3));
 	mp.insert(make_pair(4, 4));
+	mp[4] = 5;
+	mp[10] = 100;
 	//mp.mapInorder();
 	MyMap<int, int>::iterator it = mp.begin();
 	while (it != mp.end())
 	{
 		cout << it->first << "---" << it->second << endl;
-		it->first = 10;
-		it->second = 100;
+		//it->first = 10;
+		//it->second = 100;
 		++it;
 	}
-
+	/*
 	it = mp.begin();
 	while (it != mp.end())
 	{
@@ -456,6 +511,7 @@ void testMap()
 		it->second = 100;
 		++it;
 	}
+	*/
 }
 
 void testSet()
@@ -467,9 +523,38 @@ void testSet()
 	s.insert(4);
 }
 
+void testMapIterator()
+{
+	MyMap<int, int> mp;
+
+	//mp.insert(make_pair(2, 2));
+	mp.insert(make_pair(1, 1));
+	mp.insert(make_pair(3, 3));
+	//mp.insert(make_pair(4, 4));
+
+	MyMap<int, int>::iterator it = mp.begin();
+	while (it != mp.end())
+	{
+		cout << it->first << "---" << it->second << "  ";
+		++it;
+	}
+	cout << endl;
+
+	it = mp.rbegin();
+	while (it != mp.end())
+	{
+		cout << it->first << "---" << it->second << "  ";
+		--it;
+	}
+	cout << endl;
+}
+
 int main()
 {
 	testMap();
 	//testSet();
+	//testMapIterator();
 	return 0;
 }
+
+
