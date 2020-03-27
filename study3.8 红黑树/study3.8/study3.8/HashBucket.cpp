@@ -27,7 +27,7 @@ public:
 	{
 		//_table.reserve(N);
 		// resize之后可以使用[]进行随机访问
-		_table.resize(N);
+		_table.resize(N); 
 		for (size_t i = 0; i < N; ++i)
 		{
 			_table[i]._state = EMPTY;
@@ -142,10 +142,9 @@ void testHT()
 
 }
 
-/*
+
 int main()
 {
-testHT();
-return 0;
+	testHT();
+	return 0;
 }
-*/
