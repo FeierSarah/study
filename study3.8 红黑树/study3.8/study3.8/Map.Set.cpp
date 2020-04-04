@@ -453,7 +453,7 @@ public:
 	/*
 	void mapInorder()
 	{
-		_rb.inOrder();
+	_rb.inOrder();
 	}
 	*/
 private:
@@ -476,7 +476,7 @@ public:
 	{
 		return _rb.insert(value);
 	}
-	
+
 private:
 	RBTree<K, K, SetKeyOfValue> _rb;
 };
@@ -486,7 +486,7 @@ private:
 void testMap()
 {
 	MyMap<int, int> mp;
-	
+
 	mp.insert(make_pair(2, 2));
 	mp.insert(make_pair(1, 1));
 	mp.insert(make_pair(3, 3));
@@ -506,10 +506,10 @@ void testMap()
 	it = mp.begin();
 	while (it != mp.end())
 	{
-		cout << it->first << "---" << it->second << endl;
-		it->first = 10;
-		it->second = 100;
-		++it;
+	cout << it->first << "---" << it->second << endl;
+	it->first = 10;
+	it->second = 100;
+	++it;
 	}
 	*/
 }
@@ -549,12 +549,13 @@ void testMapIterator()
 	cout << endl;
 }
 
+
+/*
 int main()
 {
-	testMap();
-	//testSet();
-	//testMapIterator();
-	return 0;
+    testMap();
+    //testSet();
+    //testMapIterator();
+    return 0;
 }
-
-
+*/
